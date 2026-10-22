@@ -27,8 +27,11 @@ class Game:
             command = self.event_handler.handle_input()
 
             if command:
-                self.command_list.append(command)
-                command.execute(self.player, self.command_list)
+                ret = command.execute(self.player, self.command_list)
+                print(ret)
+                if ret:
+                    self.command_list.append(command)
 
             pygame.display.flip()
+            # print(f"x:{self.player.x} y:{self.player.y}")
             self.clock.tick(60)
