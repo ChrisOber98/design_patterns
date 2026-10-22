@@ -5,6 +5,7 @@ from game_commands import (
     MoveLeftCommand,
     MoveRightCommand,
     MoveUpCommand,
+    UndoMoveCommand,
 )
 
 
@@ -16,10 +17,12 @@ class EventHandler:
                 raise SystemExit
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_w:
-                    return MoveUpCommand
+                    return MoveUpCommand()
                 if event.key == pygame.K_a:
-                    return MoveLeftCommand
+                    return MoveLeftCommand()
                 if event.key == pygame.K_s:
-                    return MoveDownCommand
+                    return MoveDownCommand()
                 if event.key == pygame.K_d:
-                    return MoveRightCommand
+                    return MoveRightCommand()
+                if event.key == pygame.K_z:
+                    return UndoMoveCommand()

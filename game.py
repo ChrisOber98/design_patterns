@@ -3,6 +3,8 @@ import pygame
 from player import Player
 from event_handler import EventHandler
 
+from game_commands import UndoMoveCommand
+
 
 class Game:
     def __init__(self):
@@ -15,6 +17,8 @@ class Game:
 
         self.player = Player(self)
 
+        self.command_list = []
+
     def run(self):
         while True:
             self.screen.fill("purple")
@@ -23,7 +27,8 @@ class Game:
             command = self.event_handler.handle_input()
 
             if command:
-                command.execute(command, self.player)
+                self.command_list.append(command)
+                command.execute(self.player, self.command_list)
 
             pygame.display.flip()
             self.clock.tick(60)
