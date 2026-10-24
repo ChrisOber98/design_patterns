@@ -1,6 +1,6 @@
 import pygame
 
-from game_commands import (
+from .game_commands import (
     MoveDownCommand,
     MoveLeftCommand,
     MoveRightCommand,

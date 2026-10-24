@@ -1,9 +1,9 @@
 import pygame
 
-from player import Player
-from event_handler import EventHandler
+from .player import Player
+from .event_handler import EventHandler
 
-from game_commands import UndoMoveCommand
+from .game_commands import UndoMoveCommand
 
 
 class Game:
