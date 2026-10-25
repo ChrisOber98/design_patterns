@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Command Pattern Project",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "design_patterns.command_patterns.main",
+            "cwd": "${workspaceFolder}",
+            "python": "${workspaceFolder}/.venv/bin/python"
+        },
+        {
+            "name": "Run BAD Flyweight Pattern Project",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "design_patterns.flyweight_pattern_bad.main",
+            "cwd": "${workspaceFolder}",
+            "python": "${workspaceFolder}/.venv/bin/python"
+        },
+        {
+            "name": "Run GOOD Flyweight Pattern Project",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "design_patterns.flyweight_pattern_good.main",
+            "cwd": "${workspaceFolder}",
+            "python": "${workspaceFolder}/.venv/bin/python"
+        },
+    ]
+}
