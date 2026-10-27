@@ -27,10 +27,8 @@ class Player:
 
     def update(self) -> None:
         self.x += self.direction * self.speed
-        if self.x < 0:
-            self.x = 0
-        if self.x > self.window_handler.width - self.width:
-            self.x = self.window_handler.width - self.width
+        self.x = max(self.x, 0)
+        self.x = min(self.x, self.window_handler.width - self.width)
         self.rect.x = self.x
 
     def draw(self) -> None:
