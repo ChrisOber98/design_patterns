@@ -9,14 +9,10 @@ class WindowHandler:
         self.surface = self._create_surface()
         self.rect = self.surface.get_rect()
 
-    def display(self) -> None:
-        self._update()
-        self._draw()
-
-    def _update(self) -> None:
+    def update(self) -> None:
         self._set_bg_color()
 
-    def _draw(self) -> None:
+    def draw(self) -> None:
         pygame.display.flip()
 
     def _create_surface(self) -> None:
