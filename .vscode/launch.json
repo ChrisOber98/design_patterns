@@ -25,5 +25,13 @@
             "cwd": "${workspaceFolder}",
             "python": "${workspaceFolder}/.venv/bin/python"
         },
+        {
+            "name": "Run Observer Pattern Project",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "design_patterns.observer_pattern.main",
+            "cwd": "${workspaceFolder}",
+            "python": "${workspaceFolder}/.venv/bin/python"
+        },
     ]
 }
