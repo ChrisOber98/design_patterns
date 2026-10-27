@@ -19,9 +19,18 @@ class Player:
         self.x: float = 0
         self.y: float = 0
         self.rect: Rect = Rect(self.x, self.y, self.width, self.height)
+        self.direction: int = 0
+        self.speed: int = 5
         self.rect.midbottom = self.window_handler.rect.midbottom
         self.x = self.rect.x
         self.y = self.rect.y
 
+    def update(self) -> None:
+        self.x += self.direction * self.speed
+        self.rect.x = self.x
+
     def draw(self) -> None:
         pygame.draw.rect(self.window_handler.surface, self.color, self.rect)
+
+    def set_direction(self, direction: int) -> None:
+        self.direction = direction
