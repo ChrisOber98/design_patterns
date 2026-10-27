@@ -11,7 +11,7 @@ class Player:
         color: tuple[int, int, int] = (0, 0, 0),
         width: float = 20,
         height: float = 20,
-    ):
+    ) -> None:
         self.window_handler: WindowHandler = window_handler
         self.color: tuple[int, int, int] = color
         self.width: float = width

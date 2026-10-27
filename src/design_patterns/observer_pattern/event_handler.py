@@ -1,13 +1,13 @@
 import pygame
 from pygame import Event
 
-from .command import Command
+from .commands.command import Command
 from .player import Player
-from .set_player_direction import SetPlayerDirection
+from .commands.game_commands.set_player_direction import SetPlayerDirection
 
 
 class EventHandler:
-    def __init__(self, player: Player):
+    def __init__(self, player: Player) -> None:
         self.player: Player = player
 
     def process_input(self) -> Command | None:

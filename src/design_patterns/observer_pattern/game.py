@@ -7,7 +7,7 @@ from .window_handler import WindowHandler
 
 
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         pygame.init()
 
         self.window_handler: WindowHandler = WindowHandler()
@@ -17,7 +17,7 @@ class Game:
         self.command_handler: Commandhandler = Commandhandler()
         self.is_running: bool = True
 
-    def run(self):
+    def run(self) -> None:
         while self.is_running:
             command = self.event_handler.process_input()
             if command:
