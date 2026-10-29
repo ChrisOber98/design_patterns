@@ -2,7 +2,7 @@ import pygame
 
 from .commands.command_handler import Commandhandler
 from .event_handler import EventHandler
-from .player import Player
+from .entities.entity import Entity
 from .window_handler import WindowHandler
 
 
@@ -11,7 +11,7 @@ class Game:
         pygame.init()
 
         self.window_handler: WindowHandler = WindowHandler()
-        self.player: Player = Player(self.window_handler)
+        self.player: Entity = Entity(self.window_handler)
         self.clock: pygame.Clock = pygame.time.Clock()
         self.event_handler: EventHandler = EventHandler(self.player)
         self.command_handler: Commandhandler = Commandhandler()

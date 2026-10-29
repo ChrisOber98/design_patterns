@@ -9,5 +9,6 @@ class Commandhandler:
         self.commands.append(command)
 
     def execute_commands(self) -> None:
-        for command in self.commands:
+        while len(self.commands) != 0:
+            command = self.commands.pop()
             command.execute()
