@@ -1,6 +1,6 @@
 import pygame
 
-from .command_handler import Commandhandler
+from .commands.command_handler import Commandhandler
 from .event_handler import EventHandler
 from .player import Player
 from .window_handler import WindowHandler
