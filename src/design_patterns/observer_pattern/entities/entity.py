@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 import pygame
 from pygame import Rect
@@ -23,6 +23,7 @@ class Entity(ABC):
         self.rect: Rect = Rect(self.x, self.y, self.width, self.height)
         self.x_velocity: int = 0
         self.y_velocity: int = 0
+
         self.rect.midbottom = self.window_handler.rect.midbottom
         self.x = self.rect.x
         self.y = self.rect.y
@@ -41,6 +42,9 @@ class Entity(ABC):
         self.y_velocity -= 1
         if self.y == self.window_handler.height - self.height:
             self.y_velocity = 0
+
+        if self.x == self.window_handler.width - self.width or self.x == 0:
+            self.x_velocity = 0
 
     def draw(self) -> None:
         pygame.draw.rect(self.window_handler.surface, self.color, self.rect)

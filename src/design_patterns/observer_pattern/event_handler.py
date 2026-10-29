@@ -4,12 +4,12 @@ from pygame import Event
 from .commands.command import Command
 from .commands.game_commands.set_entity_x_velocity import SetEntityXVelocity
 from .commands.game_commands.set_entity_y_velocity import SetEntityYVelocity
-from .entities.entity import Entity
+from .entities.player import Player
 
 
 class EventHandler:
-    def __init__(self, player: Entity) -> None:
-        self.player: Entity = player
+    def __init__(self, player: Player) -> None:
+        self.player: Player = player
 
     def process_input(self) -> Command | None:
         for event in pygame.event.get():

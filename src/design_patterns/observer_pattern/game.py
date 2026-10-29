@@ -1,9 +1,12 @@
 import pygame
 
 from .commands.command_handler import Commandhandler
+from .entities.player import Player
+from .entities.good_entity import GoodEntity
 from .event_handler import EventHandler
-from .entities.entity import Entity
 from .window_handler import WindowHandler
+
+from random import randint
 
 
 class Game:
@@ -11,7 +14,7 @@ class Game:
         pygame.init()
 
         self.window_handler: WindowHandler = WindowHandler()
-        self.player: Entity = Entity(self.window_handler)
+        self.player: Player = Player(self.window_handler)
         self.clock: pygame.Clock = pygame.time.Clock()
         self.event_handler: EventHandler = EventHandler(self.player)
         self.command_handler: Commandhandler = Commandhandler()
