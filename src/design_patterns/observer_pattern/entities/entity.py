@@ -1,53 +1,30 @@
 from abc import ABC
 
-import pygame
-from pygame import Rect
-
-from ..window_handler import WindowHandler
+from pygame.rect import Rect
 
 
 class Entity(ABC):
     def __init__(
         self,
-        window_handler: WindowHandler,
         color: tuple[int, int, int] = (0, 0, 0),
         width: float = 20,
         height: float = 20,
+        x: float = 0,
+        y: float = 0,
+        x_velocity: int = 0,
     ) -> None:
-        self.window_handler: WindowHandler = window_handler
         self.color: tuple[int, int, int] = color
         self.width: float = width
         self.height: float = height
-        self.x: float = 0
-        self.y: float = 0
+        self.x: float = x
+        self.y: float = y
         self.rect: Rect = Rect(self.x, self.y, self.width, self.height)
-        self.x_velocity: int = 0
+        self.x_velocity: int = x_velocity
         self.y_velocity: int = 0
+        self.speed: int = 5
 
-        self.rect.midbottom = self.window_handler.rect.midbottom
         self.x = self.rect.x
         self.y = self.rect.y
-
-    def update(self) -> None:
-        self.x += self.x_velocity
-        self.x = max(self.x, 0)
-        self.x = min(self.x, self.window_handler.width - self.width)
-        self.rect.x = self.x
-
-        self.y -= self.y_velocity
-        self.y = max(self.y, 0)
-        self.y = min(self.y, self.window_handler.height - self.height)
-        self.rect.y = self.y
-
-        self.y_velocity -= 1
-        if self.y == self.window_handler.height - self.height:
-            self.y_velocity = 0
-
-        if self.x == self.window_handler.width - self.width or self.x == 0:
-            self.x_velocity = 0
-
-    def draw(self) -> None:
-        pygame.draw.rect(self.window_handler.surface, self.color, self.rect)
 
     def set_x_velocity(self, x_velocity: int) -> None:
         self.x_velocity = x_velocity

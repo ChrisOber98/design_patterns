@@ -1,12 +1,11 @@
 import pygame
 
 from .commands.command_handler import Commandhandler
+from .entities.fireball import Fireball
 from .entities.player import Player
-from .entities.good_entity import GoodEntity
 from .event_handler import EventHandler
+from .physics.physics_handler import PhysicsHandler
 from .window_handler import WindowHandler
-
-from random import randint
 
 
 class Game:
@@ -14,11 +13,25 @@ class Game:
         pygame.init()
 
         self.window_handler: WindowHandler = WindowHandler()
-        self.player: Player = Player(self.window_handler)
+        self.physicsHandler: PhysicsHandler = PhysicsHandler(self.window_handler)
+        self.player: Player = Player(
+            window_handler=self.window_handler,
+            x=self.window_handler.width / 2,
+            y=0,
+        )
+        self.physicsHandler.add_entity(self.player)
+        self.window_handler.add_entity(self.player)
+        self.fireball: Fireball = Fireball(
+            self.window_handler, x=0, y=self.window_handler.height
+        )
+        self.physicsHandler.add_entity(self.fireball)
+        self.window_handler.add_entity(self.fireball)
         self.clock: pygame.Clock = pygame.time.Clock()
         self.event_handler: EventHandler = EventHandler(self.player)
         self.command_handler: Commandhandler = Commandhandler()
         self.is_running: bool = True
+
+        self.fireball.set_x_velocity(10)
 
     def run(self) -> None:
         while self.is_running:
@@ -26,8 +39,6 @@ class Game:
             if command:
                 self.command_handler.add_command(command)
             self.command_handler.execute_commands()
-            self.window_handler.update()
-            self.player.update()
-            self.player.draw()
+            self.physicsHandler.update()
             self.window_handler.draw()
             self.clock.tick(60)
