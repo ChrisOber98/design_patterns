@@ -18,7 +18,7 @@ class Game:
         self.player: Player = Player(
             window_handler=self.window_handler,
             x=self.window_handler.width / 2,
-            y=0,
+            y=self.window_handler.height,
         )
         self.physicsHandler.add_entity(self.player)
         self.window_handler.add_entity(self.player)

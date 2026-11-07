@@ -2,7 +2,6 @@ from ..entities.entity import Entity
 from ..observer.events import Events
 from ..observer.observer import Observer
 from .text_box import TextBox
-from ..entities.player import Player
 
 
 class Scoreboard(TextBox, Observer):
