@@ -31,3 +31,22 @@ class Entity(ABC):
 
     def set_y_velocity(self, y_velocity: int) -> None:
         self.y_velocity = y_velocity
+
+    def set_x_y_position(
+        self, x_pos: float | None = None, y_pos: float | None = None
+    ) -> None:
+        if x_pos != None:
+            self.x = x_pos
+        if y_pos != None:
+            self.y = y_pos
+
+        self.rect.x = self.x
+        self.rect.y = self.y
+
+    def reset_position(self) -> None:
+        self.set_x_y_position(x_pos=0)
+
+    def change_direction(self) -> None:
+        cur_velocity = self.x_velocity
+        cur_velocity *= -1
+        self.x_velocity = cur_velocity

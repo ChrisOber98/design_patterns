@@ -1,8 +1,7 @@
+from ..observer.events import Events
 from ..observer.observer import Observer
 from ..window_handler import WindowHandler
 from .entity import Entity
-
-from ..observer.events import Events
 
 
 class Fireball(Entity, Observer):
@@ -24,8 +23,6 @@ class Fireball(Entity, Observer):
     def on_notify(self, entity: Entity, event: Events):
         match event:
             case Events.EDGE_COLLISION:
-                cur_velocity = self.x_velocity
-                cur_velocity *= -1
-                self.x_velocity = cur_velocity
+                self.change_direction()
             case Events.PLAYER_COLLISION:
-                pass
+                self.reset_position()
