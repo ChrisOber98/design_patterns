@@ -15,5 +15,4 @@ class Subject:
 
     def notify(self, entity: Entity, event: Events):
         for observer in self.observers:
-            if observer == entity:
-                observer.on_notify(entity, event)
+            observer.on_notify(entity, event)

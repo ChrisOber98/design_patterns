@@ -4,6 +4,7 @@ from .commands.command_handler import Commandhandler
 from .entities.fireball import Fireball
 from .entities.player import Player
 from .event_handler import EventHandler
+from .gui.scoreboard import Scoreboard
 from .physics.physics_handler import PhysicsHandler
 from .window_handler import WindowHandler
 
@@ -30,6 +31,9 @@ class Game:
         self.event_handler: EventHandler = EventHandler(self.player)
         self.command_handler: Commandhandler = Commandhandler()
         self.is_running: bool = True
+        self.score_board: Scoreboard = Scoreboard(100, 100, (0, 255, 0), "Score: 0")
+        self.window_handler.add_textbox(self.score_board)
+        self.physicsHandler.add_text_box(self.score_board)
 
         self.fireball.set_x_velocity(10)
 
