@@ -1,4 +1,5 @@
 from ..entities.entity import Entity
+from ..entities.fireball import Fireball
 from ..observer.events import Events
 from ..observer.observer import Observer
 from .text_box import TextBox
@@ -22,7 +23,8 @@ class Scoreboard(TextBox, Observer):
     def on_notify(self, entity: Entity, event: Events):
         match event:
             case Events.EDGE_COLLISION:
-                self.score += 1
-                self.render_score()
+                if isinstance(entity, Fireball):
+                    self.score += 1
+                    self.render_score()
             case Events.PLAYER_COLLISION:
                 pass
