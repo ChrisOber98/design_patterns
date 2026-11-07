@@ -4,6 +4,7 @@ from pygame import Event
 from .commands.command import Command
 from .commands.game_commands.set_entity_x_velocity import SetEntityXVelocity
 from .commands.game_commands.set_entity_y_velocity import SetEntityYVelocity
+from .commands.game_commands.quit_game import QuitGame
 from .entities.player import Player
 
 
@@ -31,6 +32,8 @@ class EventHandler:
             return SetEntityXVelocity(self.player, 5)
         if event.key == pygame.K_SPACE and self.player.y_velocity == 0:
             return SetEntityYVelocity(self.player, 20)
+        if event.key == pygame.K_q:
+            return QuitGame()
 
     def _process_keyup_event(self, event: Event) -> None:
         keys = pygame.key.get_pressed()

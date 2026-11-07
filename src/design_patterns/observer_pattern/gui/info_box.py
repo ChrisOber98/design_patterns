@@ -13,7 +13,7 @@ class InfoBox(TextBox, Observer):
         text: str | None = None,
     ):
         TextBox.__init__(self, x=x, y=y, color=color, text=text)
-        text = "A: Moves Left\nD: Moves Right\nSpace: Jump\n"
+        text = "A: Moves Left\nD: Moves Right\nSpace: Jump\nQ: Quits game"
         self.render(text)
 
     def on_notify(self, entity: Entity, event: Events):
