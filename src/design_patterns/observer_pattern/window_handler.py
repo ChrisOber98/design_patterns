@@ -40,7 +40,7 @@ class WindowHandler:
         for entity in self.entitys:
             pygame.draw.rect(self.surface, entity.color, entity.rect)
         for text_box in self.text_boxs:
-            self.surface.blit(text_box.surface, self.rect)
+            self.surface.blit(text_box.surface, text_box.rect)
 
         pygame.display.flip()
 

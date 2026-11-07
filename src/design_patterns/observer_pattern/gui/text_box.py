@@ -26,3 +26,5 @@ class TextBox(ABC):
     def render(self, text: str) -> None:
         self.surface = self.font.render(text, True, self.color)
         self.rect = self.surface.get_rect()
+        self.rect.x = self.x
+        self.rect.y = self.y
