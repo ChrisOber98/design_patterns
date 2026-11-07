@@ -23,6 +23,7 @@ class Fireball(Entity, Observer):
     def on_notify(self, entity: Entity, event: Events):
         match event:
             case Events.EDGE_COLLISION:
-                self.change_direction()
+                if isinstance(entity, Fireball):
+                    self.change_direction()
             case Events.PLAYER_COLLISION:
                 self.reset_position()
